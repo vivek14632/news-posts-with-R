@@ -6,6 +6,7 @@ fb_oauth <- fbOAuth(app_id="***",
                     app_secret="*****")
 
 fb_page <- getPage(page="cnn", token=fb_oauth,n=4000,feed = T,reactions = T)
+save.image(file="cnn.RData")
 
 
 
