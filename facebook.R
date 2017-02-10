@@ -16,6 +16,8 @@ for( i in 1:length(fb_page$message))
   msg1=fb_page$message[i]
   msg1=gsub("[.]","",msg1)
   msg1=gsub("[,]","",msg1)
+  msg1=gsub("[\n]","",msg1)
+  
   msg1=strsplit(msg1," ")
   corpus1=c(corpus1,unique(msg1[[1]]))
 }
