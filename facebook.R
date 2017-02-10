@@ -9,16 +9,13 @@ fb_page <- getPage(page="cnn", token=fb_oauth,n=4000,feed = T,reactions = T)
 save.image(file="cnn.RData")
 
 #create corpus
-corpus1=vector()
+all_posts=vector()
 for( i in 1:length(fb_page$message))
 {
   #browser()
-  msg1=fb_page$message[i]
-  msg1=gsub("[.]","",msg1)
-  msg1=gsub("[,]","",msg1)
-  msg1=gsub("[\n]","",msg1)
+  all_posts=c(all_posts,fb_page$message[i])
   
-  msg1=strsplit(msg1," ")
-  corpus1=c(corpus1,unique(msg1[[1]]))
 }
+library('tm')
+corpus2=VCorpus(VectorSource(all_posts))
 
