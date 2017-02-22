@@ -1,6 +1,9 @@
 
 install.packages('Rfacebook',dependencies = T)
+install.packages('stringr')
+library('stringr')
 library('Rfacebook')
+library('tm')
 #create a favebook app and add http://localhost:1410/ to your app
 fb_oauth <- fbOAuth(app_id="***",
                     app_secret="*****")
@@ -16,6 +19,12 @@ for( i in 1:length(fb_page$message))
   all_posts=c(all_posts,fb_page$message[i])
   
 }
-library('tm')
-corpus2=VCorpus(VectorSource(all_posts))
+all_posts_unique=str_replace_all(all_posts_unique, "[^[:alnum:]]", " ")
+ul <- unlist(strsplit(all_posts_unique, "\\s+|[[:punct:]]")) 
+unique(ul)
+ul=str_replace_all(ul,"[^[:graph:]]", " ") 
+dataSetFinal <- iconv(ul, 'UTF-8', 'ASCII')
+corpus = VCorpus(VectorSource(dataSetFinal))
+tdm = as.matrix(TermDocumentMatrix(corpus, control = list(wordLengths = c(1, Inf))))
+
 
