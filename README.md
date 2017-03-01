@@ -1,6 +1,10 @@
 # Social Media Analytics
 
-Data Collection
+Team:
+Bhargav
+Vivek 
+Natasha
+Mirali
 
 
 
