@@ -1,5 +1,5 @@
 library('Rfacebook')
-load('/home/cis1024/facebook/m_facebook.RData')
+load('/home/bhargav/appid.RData')
 fb_page <- getPage(page="washingtonpost", token=fb_oauth,n=4000,feed = T,reactions = T)
 filename <- "/home/bhargav/datacollection/news-posts-with-R/data/washingtonpost"
 filename <- paste(filename,Sys.Date(),sep='')

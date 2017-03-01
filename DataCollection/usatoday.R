@@ -1,5 +1,5 @@
 library('Rfacebook')
-load('/home/cis1024/facebook/m_facebook.RData')
+load('/home/cis1024/facebook/m_facebook2.RData')
 fb_page <- getPage(page="usatoday", token=fb_oauth,n=4000,feed = T,reactions = T)
 filename <- "/home/bhargav/datacollection/news-posts-with-R/data/usatoday"
 filename <- paste(filename,Sys.Date(),sep='')
