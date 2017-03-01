@@ -1,8 +1,4 @@
-
-
-fb_page <- getPage(page="cnn", token=fb_oauth,n=4000,feed = T,reactions = T)
-save.image(file="cnn.RData")
-
+load('/home/bhargav/datacollection/news-posts-with-R/data/bbcnews2017-03-01.RData')
 #create corpus
 all_posts=vector()
 for( i in 1:length(fb_page$message))
