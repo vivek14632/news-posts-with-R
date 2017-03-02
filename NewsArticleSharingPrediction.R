@@ -17,6 +17,9 @@ tdm = as.matrix(TermDocumentMatrix(corpus, control = list(wordLengths = c(1, Inf
 
 
 #Linear Model
+
+#http://stats.idre.ucla.edu/r/dae/robust-regression/
+
 summary(lm(fb_page$shares_count~
              fb_page$likes_count+
             fb_page$comments_count
