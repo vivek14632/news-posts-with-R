@@ -25,8 +25,15 @@ cnbc_data$angry <- as.numeric(cnbc_data$angry)
 
 model1 = lm(shares~ love +haha + wow + sad + angry+comments+likes,data = cnbc_data)
 summary(model1)
+opar <- par(mfrow = c(2,2), oma = c(0, 0, 1.1, 0))
+plot(model, las = 1)
+par(opar)
 
 model2=rlm(shares~ love +haha + wow + sad + angry+comments+likes,data = cnbc_data)
 summary(model2)
+summary(model1)
+opar <- par(mfrow = c(2,2), oma = c(0, 0, 1.1, 0))
+plot(model, las = 1)
+par(opar)
 
 
