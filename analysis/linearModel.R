@@ -23,4 +23,6 @@ cnbc_data$angry <- as.numeric(cnbc_data$angry)
 model1 = lm(shares~ love +haha + wow + sad + angry+comments+likes,data = cnbc_data)
 summary(model1)
 
+model2=rlm(shares~ love +haha + wow + sad + angry+comments+likes,data = cnbc_data)
+
 
