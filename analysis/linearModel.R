@@ -20,5 +20,7 @@ cnbc_data$wow <- as.numeric(cnbc_data$wow)
 cnbc_data$sad <- as.numeric(cnbc_data$sad)
 cnbc_data$angry <- as.numeric(cnbc_data$angry)
 
-cnbc_lm = lm(shares~ love +haha + wow + sad + angry+link+type+comments+likes,data = cnbc_data)
-summary(cnbc_lm)
+model1 = lm(shares~ love +haha + wow + sad + angry+comments+likes,data = cnbc_data)
+summary(model1)
+
+
