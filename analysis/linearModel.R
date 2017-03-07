@@ -27,5 +27,6 @@ model1 = lm(shares~ love +haha + wow + sad + angry+comments+likes,data = cnbc_da
 summary(model1)
 
 model2=rlm(shares~ love +haha + wow + sad + angry+comments+likes,data = cnbc_data)
+summary(model2)
 
 
