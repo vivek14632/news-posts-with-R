@@ -1,3 +1,6 @@
+require(foreign)
+require(MASS)
+
 cnbc_data=as.data.frame(cbind(likes=fb_page$likes_count,
                              message=fb_page$message,
                              create_time=fb_page$created_time,
