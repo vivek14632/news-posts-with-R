@@ -1,1 +1,1 @@
-dataDir<-'/home/bhargav/datacollection/news-posts-with-R/data/'
+dataDir<-'~/socialNetworkData'
