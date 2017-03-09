@@ -1,4 +1,4 @@
-source('dataLocation.R')
+source('./dataLocation.R')
 filename <- paste(dataDir,'wsj',sep='')
 
 library('Rfacebook')
