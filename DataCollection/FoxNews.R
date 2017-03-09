@@ -1,3 +1,4 @@
+source('dataLocation.R')
 library('Rfacebook')
 load('/home/bhargav/appid.RData')
 fb_page <- getPage(page="FoxNews", token=fb_oauth,n=100,feed = T,reactions = T)
