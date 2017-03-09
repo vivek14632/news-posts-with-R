@@ -4,7 +4,7 @@ require(MASS)
 cnbc_data=as.data.frame(cbind(likes=as.numeric(fb_page$likes_count),
                              message=fb_page$message,
                              create_time=fb_page$created_time,
-                             today='2017-02-01',
+                             today='2017-02-28',
                              type=as.factor(fb_page$type),
                              link=as.factor(fb_page$link),
                              comments=as.numeric(fb_page$comments_count),
