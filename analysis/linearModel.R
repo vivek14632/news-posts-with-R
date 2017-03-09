@@ -22,6 +22,9 @@ cnbc_data$haha <- as.numeric(cnbc_data$haha)
 cnbc_data$wow <- as.numeric(cnbc_data$wow)
 cnbc_data$sad <- as.numeric(cnbc_data$sad)
 cnbc_data$angry <- as.numeric(cnbc_data$angry)
+cnbc_data$likes <- as.numeric(cnbc_data$likes)
+cnbc_data$comments <- as.numeric(cnbc_data$comments)
+
 
 cnbc_data$create_time <- strptime(cnbc_data$create_time,format = "%Y-%m-%d")
 cnbc_data$today <- strptime(cnbc_data$today,format = "%Y-%m-%d")
