@@ -1,19 +1,19 @@
 require(foreign)
 require(MASS)
 
-cnbc_data=as.data.frame(cbind(likes=fb_page$likes_count,
+cnbc_data=as.data.frame(cbind(likes=as.numeric(fb_page$likes_count),
                              message=fb_page$message,
                              create_time=fb_page$created_time,
                              today='2017-02-01',
                              type=as.factor(fb_page$type),
                              link=as.factor(fb_page$link),
-                             comments=fb_page$comments_count,
-                             shares=fb_page$shares_count,
-                             love=fb_page$love_count,
-                             haha=fb_page$haha_count,
-                             wow=fb_page$wow_count,
-                             sad=fb_page$sad_count,
-                             angry=fb_page$angry_count
+                             comments=as.numeric(fb_page$comments_count),
+                             shares=as.numeric(fb_page$shares_count),
+                             love=as.numeric(fb_page$love_count),
+                             haha=as.numeric(fb_page$haha_count),
+                             wow=as.numeric(fb_page$wow_count),
+                             sad=as.numeric(fb_page$sad_count),
+                             angry=as.numeric(fb_page$angry_count)
 ))
 
 cnbc_data$shares <- as.numeric(cnbc_data$shares)
