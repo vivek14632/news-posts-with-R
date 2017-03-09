@@ -1,4 +1,4 @@
-source('dataLocation.R')
+source('./dataLocation.R')
 library('Rfacebook')
 load('/home/cis1024/facebook/m_facebook2.RData')
 fb_page <- getPage(page="forbes", token=fb_oauth,n=100,feed = T,reactions = T)
