@@ -1,1 +1,1 @@
-dataDir<-'~/socialNetworkData'
+dataDir<-'~/socialNetworkData/'
