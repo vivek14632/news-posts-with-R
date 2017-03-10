@@ -4,7 +4,7 @@ require(MASS)
 cnbc_data=as.data.frame(cbind(likes=fb_page$likes_count,
                              message=fb_page$message,
                              create_time=fb_page$created_time,
-                             today='2017-02-28',
+                             today='2017-02-01',
                              type=as.factor(fb_page$type),
                              link=as.factor(fb_page$link),
                              comments=fb_page$comments_count,
@@ -41,44 +41,3 @@ plot(model2, las = 1)
 par(opar)
 
 
-#mean of all variables
-mean(as.numeric(cnbc_data$likes))
-mean(as.numeric(cnbc_data$shares),na.rm = TRUE)
-mean(as.numeric(cnbc_data$love),na.rm = TRUE)
-mean(as.numeric(cnbc_data$haha),na.rm = TRUE)
-mean(as.numeric(cnbc_data$wow),na.rm = TRUE)
-mean(as.numeric(cnbc_data$sad),na.rm = TRUE)
-mean(as.numeric(cnbc_data$angry),na.rm = TRUE)
-mean(as.numeric(cnbc_data$comments))
-
-#min of all variables
-min(as.numeric(cnbc_data$likes))
-min(as.numeric(cnbc_data$shares),na.rm = TRUE)
-min(as.numeric(cnbc_data$love),na.rm = TRUE)
-min(as.numeric(cnbc_data$haha),na.rm = TRUE)
-min(as.numeric(cnbc_data$wow),na.rm = TRUE)
-min(as.numeric(cnbc_data$sad),na.rm = TRUE)
-min(as.numeric(cnbc_data$angry),na.rm = TRUE)
-min(as.numeric(cnbc_data$comments))
-
-
-#max of all variables
-max(as.numeric(cnbc_data$likes))
-max(as.numeric(cnbc_data$shares),na.rm = TRUE)
-max(as.numeric(cnbc_data$love),na.rm = TRUE)
-max(as.numeric(cnbc_data$haha),na.rm = TRUE)
-max(as.numeric(cnbc_data$wow),na.rm = TRUE)
-max(as.numeric(cnbc_data$sad),na.rm = TRUE)
-max(as.numeric(cnbc_data$angry),na.rm = TRUE)
-max(as.numeric(cnbc_data$comments))
-
-
-#sd of all variables
-sd(as.numeric(cnbc_data$likes))
-sd(as.numeric(cnbc_data$shares),na.rm = TRUE)
-sd(as.numeric(cnbc_data$love),na.rm = TRUE)
-sd(as.numeric(cnbc_data$haha),na.rm = TRUE)
-sd(as.numeric(cnbc_data$wow),na.rm = TRUE)
-sd(as.numeric(cnbc_data$sad),na.rm = TRUE)
-sd(as.numeric(cnbc_data$angry),na.rm = TRUE)
-sd(as.numeric(cnbc_data$comments))
