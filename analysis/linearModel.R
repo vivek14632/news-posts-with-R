@@ -41,3 +41,47 @@ summary(model2)
 opar <- par(mfrow = c(2,2), oma = c(0, 0, 1.1, 0))
 plot(model2, las = 1)
 par(opar)
+
+
+
+#mean of all variables
+mean(as.numeric(cnbc_data$likes))
+mean(as.numeric(cnbc_data$shares),na.rm = TRUE)
+mean(as.numeric(cnbc_data$love),na.rm = TRUE)
+mean(as.numeric(cnbc_data$haha),na.rm = TRUE)
+mean(as.numeric(cnbc_data$wow),na.rm = TRUE)
+mean(as.numeric(cnbc_data$sad),na.rm = TRUE)
+mean(as.numeric(cnbc_data$angry),na.rm = TRUE)
+mean(as.numeric(cnbc_data$comments))
+
+#min of all variables
+min(as.numeric(cnbc_data$likes))
+min(as.numeric(cnbc_data$shares),na.rm = TRUE)
+min(as.numeric(cnbc_data$love),na.rm = TRUE)
+min(as.numeric(cnbc_data$haha),na.rm = TRUE)
+min(as.numeric(cnbc_data$wow),na.rm = TRUE)
+min(as.numeric(cnbc_data$sad),na.rm = TRUE)
+min(as.numeric(cnbc_data$angry),na.rm = TRUE)
+min(as.numeric(cnbc_data$comments))
+
+
+#max of all variables
+max(as.numeric(cnbc_data$likes))
+max(as.numeric(cnbc_data$shares),na.rm = TRUE)
+max(as.numeric(cnbc_data$love),na.rm = TRUE)
+max(as.numeric(cnbc_data$haha),na.rm = TRUE)
+max(as.numeric(cnbc_data$wow),na.rm = TRUE)
+max(as.numeric(cnbc_data$sad),na.rm = TRUE)
+max(as.numeric(cnbc_data$angry),na.rm = TRUE)
+max(as.numeric(cnbc_data$comments))
+
+
+#sd of all variables
+sd(as.numeric(cnbc_data$likes))
+sd(as.numeric(cnbc_data$shares),na.rm = TRUE)
+sd(as.numeric(cnbc_data$love),na.rm = TRUE)
+sd(as.numeric(cnbc_data$haha),na.rm = TRUE)
+sd(as.numeric(cnbc_data$wow),na.rm = TRUE)
+sd(as.numeric(cnbc_data$sad),na.rm = TRUE)
+sd(as.numeric(cnbc_data$angry),na.rm = TRUE)
+sd(as.numeric(cnbc_data$comments))
