@@ -11,10 +11,11 @@ for(val in 1:length(newsagency)){
   auth[(val%%4)+1]
   load(auth[(val%%4)+1])
   fb_page <- getPage(page=newsagency[val], token=fb_oauth,n=100,feed = T,reactions = T)
+  posts=list()
   for(value in 1:length(fb_page$id))
   {
-    fb_user <- getPost(fb_page$id, fb_oauth, comments = TRUE, likes = TRUE,
-                       n.likes = n, n.comments = n)
+    posts[[value]] <- getPost(fb_page$id[value], fb_oauth, comments = TRUE, likes = TRUE,
+                       n.likes = fb_page$likes_count[value], n.comments = fb_page$comments_count[value])
   }
   
   filename <- paste(dataDir,newsagency[val],sep='')
