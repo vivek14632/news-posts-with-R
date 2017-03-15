@@ -1,0 +1,7 @@
+cnbc
+forbes
+nytimes
+usatoday
+washingtonpost
+FoxNews
+bbcnews
