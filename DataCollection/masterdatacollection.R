@@ -3,12 +3,20 @@ library('Rfacebook')
 
 
 
-auth <- data.frame('/home/cis1024/facebook/m_facebook.RData','/home/bhargav/appid.RData','/home/cis1024/facebook/m_facebook2.RData','/home/cis1024/facebook/m_facebook1.RData',stringsAsFactors=FALSE)
-newsagency<-data.frame('cnbc','forbes','nytimes','usatoday','washingtonpost','FoxNews','bbcnews',stringsAsFactors=FALSE)
+#auth <- data.frame('/home/cis1024/facebook/m_facebook.RData','/home/bhargav/appid.RData','/home/cis1024/facebook/m_facebook2.RData','/home/cis1024/facebook/m_facebook1.RData',stringsAsFactors=FALSE)
+file_names=as.list(dir('/home/bhargav'))
+auth <-lapply(file_names,load,.GlobalEnv)
+newsagency<-read.csv(file="/home/bhargav/news-posts-with-R/DataCollection/newsHandle.csv", sep=" ", colClasses=c(NA,"NULL","NULL"),header = TRUE)
 for(val in 1:length(newsagency)){
   auth[(val%%4)+1]
   load(auth[(val%%4)+1])
   fb_page <- getPage(page=newsagency[val], token=fb_oauth,n=100,feed = T,reactions = T)
+  for(value in 1:length(fb_page$id))
+  {
+    fb_user <- getPost(fb_page$id, fb_oauth, comments = TRUE, likes = TRUE,
+                       n.likes = n, n.comments = n)
+  }
+  
   filename <- paste(dataDir,newsagency[val],sep='')
   filename <- paste(filename,Sys.Date(),sep='')
   filename <- paste(filename,'.RData',sep='')
