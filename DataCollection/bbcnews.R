@@ -1,6 +1,6 @@
 source('./dataLocation.R')
 library('Rfacebook')
-load('/home/cis1024/facebook/m_facebook.RData')
+load('/home/cis1024/facebook/m_facebook1.RData')
 fb_page <- getPage(page="bbcnews", token=fb_oauth,n=100,feed = T,reactions = T)
 #filename <- "/home/bhargav/datacollection/news-posts-with-R/data/bbcnews"
 filename <- paste(dataDir,'FoxNews',sep='')
