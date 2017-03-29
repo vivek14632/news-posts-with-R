@@ -4,7 +4,7 @@ library('Rfacebook')
 
 
 #auth <- data.frame('/home/cis1024/facebook/m_facebook.RData','/home/bhargav/appid.RData','/home/cis1024/facebook/m_facebook2.RData','/home/cis1024/facebook/m_facebook1.RData',stringsAsFactors=FALSE)
-file_names=as.list(dir('/home/bhargav'))
+file_names=as.list(dir('/home/bhargav/facebook/rdata'))
 auth <-lapply(file_names,load,.GlobalEnv)
 newsagency<-read.csv(file="/home/bhargav/news-posts-with-R/DataCollection/newsHandle.csv", sep=" ", colClasses=c(NA,"NULL","NULL"),header = TRUE)
 for(val in 1:length(newsagency)){
