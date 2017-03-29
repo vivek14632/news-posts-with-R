@@ -9,10 +9,10 @@ file_names=list.dirs(path = "/home/bhargav/facebook/rdata", full.names = TRUE, r
 auth=file_names
 #auth <-lapply(file_names,load,.GlobalEnv)
 newsagency<-read.csv(file="/home/bhargav/datacollection/news-posts-with-R/DataCollection/newsHandle.csv", sep=",",header = TRUE)
-for(val in 1:length(newsagency)){
+for(val in 1:nrow(newsagency)){
   auth[(val%%4)+1]
   load(auth[(val%%4)+1])
-  fb_page <- getPage(page=newsagency[val], token=fb_oauth,n=100,feed = T,reactions = T)
+  fb_page <- getPage(page=newsagency$Handler[val], token=fb_oauth,n=100,feed = T,reactions = T)
   posts=list()
   for(value in 1:length(fb_page$id))
   {
