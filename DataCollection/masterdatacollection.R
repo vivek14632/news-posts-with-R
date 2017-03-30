@@ -12,10 +12,12 @@ newsagency<-read.csv(file="https://github.com/bmthanki/news-posts-with-R/blob/ma
 for(val in 1:nrow(newsagency)){
   auth[(val%%4)+1]
   load(auth[(val%%4)+1])
+  print(load(auth[(val%%4)+1]))
   fb_page <- getPage(page=newsagency$Handler[val], token=fb_oauth,n=100,feed = T,reactions = T)
   posts=list()
   for(value in 1:length(fb_page$id))
   {
+    print(fb_page$id[value])
     posts[[value]] <- getPost(fb_page$id[value], fb_oauth, comments = TRUE, likes = TRUE,
                        n.likes = fb_page$likes_count[value], n.comments = fb_page$comments_count[value])
   }
