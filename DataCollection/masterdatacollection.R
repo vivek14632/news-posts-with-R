@@ -22,7 +22,7 @@ for(val in 1:nrow(newsagency)){
                        n.likes = fb_page$likes_count[value], n.comments = fb_page$comments_count[value])
   }
   
-  filename <- paste(dataDir,newsagency[val],sep='')
+  filename <- paste(dataDir,newsagency$Handler[val],sep='/')
   filename <- paste(filename,Sys.Date(),sep='')
   filename <- paste(filename,'.RData',sep='')
   save.image(file=filename)
