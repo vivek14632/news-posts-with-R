@@ -8,7 +8,7 @@ library('Rfacebook')
 file_names=list.files(path = "/home/bhargav/facebook/rdata", full.names = TRUE, recursive = TRUE)
 auth=file_names
 #auth <-lapply(file_names,load,.GlobalEnv)
-newsagency<-read.csv(file="https://github.com/bmthanki/news-posts-with-R/blob/master/DataCollection/newsHandle.csv", sep=",",header = TRUE)
+newsagency<-read.csv(file="https://raw.githubusercontent.com/bmthanki/news-posts-with-R/master/DataCollection/newsHandle.csv", sep=",",header = TRUE)
 for(val in 1:nrow(newsagency)){
   auth[(val%%4)+1]
   load(auth[(val%%4)+1])
