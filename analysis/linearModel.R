@@ -36,13 +36,16 @@ opar <- par(mfrow = c(2,2), oma = c(0, 0, 1.1, 0))
 plot(model1, las = 1)
 par(opar)
 
-model2=rlm(shares~ love +haha + wow + sad + angry+comments+likes,data = cnbc_data)
+library(MASS)
+model2=rlm(shares~ love +haha + wow + sad + angry+comments+likes+duration_in_days,data = cnbc_data)
 summary(model2)
 opar <- par(mfrow = c(2,2), oma = c(0, 0, 1.1, 0))
 plot(model2, las = 1)
 par(opar)
 
 
+model3=glm(factor(shares)~ love +haha + wow + sad + angry+comments+likes+duration_in_days,family=binomial(link="logit"), data = cnbc_data)
+summary(model3)
 
 #mean of all variables
 mean(as.numeric(cnbc_data$likes))
@@ -85,3 +88,7 @@ sd(as.numeric(cnbc_data$wow),na.rm = TRUE)
 sd(as.numeric(cnbc_data$sad),na.rm = TRUE)
 sd(as.numeric(cnbc_data$angry),na.rm = TRUE)
 sd(as.numeric(cnbc_data$comments))
+
+
+#dataframe to csv
+write.table(cnbc_data,"cnbc_df.tsv",sep = "\t",col.names = T,append = T)
