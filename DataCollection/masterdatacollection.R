@@ -28,7 +28,7 @@ for(val in 1:nrow(newsagency)){
       posts[[i]]$comments=cbind(posts[[i]]$comments,reply=temp)
       for(j in 1:length(posts[[i]]$post$comments_count))
       {
-          replies[[count1]]=getCommentReplies(post[[i]]$comments$id[j], token=fb_oauth)
+          replies[[count1]]=getCommentReplies(posts[[i]]$comments$id[j], token=fb_oauth)
           posts[[i]]$comments$replies[j]=count1
         
       }
