@@ -17,20 +17,38 @@ for(val in 1:nrow(newsagency)){
   posts=list()
   replies=list()
   count1=1
+  #browser()
   for(value in 1:length(fb_page$id))
   {
     print(fb_page$id[value])
+    #browser()
     posts[[value]] <- getPost(fb_page$id[value], fb_oauth, comments = TRUE, likes = TRUE,
                        n.likes = fb_page$likes_count[value], n.comments = fb_page$comments_count[value])
     for(i in 1:length(posts))
     {
       temp=rep(0,nrow(posts[[i]]$comments))
       posts[[i]]$comments=cbind(posts[[i]]$comments,reply=temp)
+      if(posts[[i]]$post$comments_count>0)
+      {
+        print(posts[[i]]$post$comments_count)
       for(j in 1:length(posts[[i]]$post$comments_count))
       {
-          replies[[count1]]=getCommentReplies(posts[[i]]$comments$id[j], token=fb_oauth)
-          posts[[i]]$comments$replies[j]=count1
+          if(!is.na(posts[[i]]$comments$id[j]))
+          {
+            tryCatch({
+              replies[[count1]]=getCommentReplies(posts[[i]]$comments$id[j], token=fb_oauth)
+            posts[[i]]$comments$reply[j]=count1
+            }, warning=function(w){
+              #print(war)
+            },error = function(e) {
+              #print(err)
+            }, finally = {
+              #print()
+            })
+          }
+        count1=count1+1
         
+      }
       }
       
     }
