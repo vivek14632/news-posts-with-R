@@ -173,4 +173,87 @@ scalars:
 . display r(N)
 74
 
+. summarize mpg
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+         mpg |        74     21.2973    5.785503         12         41
+
+. return list
+
+scalars:
+                  r(N) =  74
+              r(sum_w) =  74
+               r(mean) =  21.2972972972973
+                r(Var) =  33.47204738985561
+                 r(sd) =  5.785503209735141
+                r(min) =  12
+                r(max) =  41
+                r(sum) =  1576
+
+. display r(N)
+74
+
+. display r(max)
+41
+
+. display r(min)
+12
+
+. scalar range=r(max)-r(min)
+
+. display range
+29
+
+ regress mpg price weight
+
+      Source |       SS       df       MS              Number of obs =      74
+-------------+------------------------------           F(  2,    71) =   66.85
+       Model |  1595.93249     2  797.966246           Prob > F      =  0.0000
+    Residual |  847.526967    71  11.9369995           R-squared     =  0.6531
+-------------+------------------------------           Adj R-squared =  0.6434
+       Total |  2443.45946    73  33.4720474           Root MSE      =   3.455
+
+------------------------------------------------------------------------------
+         mpg |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+       price |  -.0000935   .0001627    -0.57   0.567     -.000418    .0002309
+      weight |  -.0058175   .0006175    -9.42   0.000    -.0070489   -.0045862
+       _cons |   39.43966   1.621563    24.32   0.000     36.20635    42.67296
+------------------------------------------------------------------------------
+
+. ereturn list
+
+scalars:
+                  e(N) =  74
+               e(df_m) =  2
+               e(df_r) =  71
+                  e(F) =  66.84814256414501
+                 e(r2) =  .6531446579233134
+               e(rmse) =  3.454996314099513
+                e(mss) =  1595.932492798133
+                e(rss) =  847.5269666613265
+               e(r2_a) =  .6433740849070687
+                 e(ll) =  -195.2169813478502
+               e(ll_0) =  -234.3943376482347
+               e(rank) =  3
+
+macros:
+            e(cmdline) : "regress mpg price weight"
+              e(title) : "Linear regression"
+          e(marginsok) : "XB default"
+                e(vce) : "ols"
+             e(depvar) : "mpg"
+                e(cmd) : "regress"
+         e(properties) : "b V"
+            e(predict) : "regres_p"
+              e(model) : "ols"
+          e(estat_cmd) : "regress_estat"
+
+matrices:
+                  e(b) :  1 x 3
+                  e(V) :  3 x 3
+
+functions:
+             e(sample)  
 
