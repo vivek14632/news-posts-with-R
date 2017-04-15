@@ -76,3 +76,6 @@ Findit is used to search news softwares or packages in stata.
 
 Help is used to get help regarding any command
 help regress
+
+Increase the number of variables in stata
+set matsize 300
