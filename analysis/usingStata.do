@@ -79,3 +79,48 @@ help regress
 
 Increase the number of variables in stata
 set matsize 300
+
+get current details of settings
+ creturn list
+
+System values
+
+    ----------------------------------------------------------------------------------------------
+        c(current_date) = "15 Apr 2017"
+        c(current_time) = "17:07:46"
+           c(rmsg_time) = 0                          (seconds, from set rmsg)
+    ----------------------------------------------------------------------------------------------
+       c(stata_version) = 13.1
+             c(version) = 13.1                       (version)
+    ----------------------------------------------------------------------------------------------
+           c(born_date) = "15 Jan 2014"
+              c(flavor) = "IC"
+                 c(bit) = 64
+                  c(SE) = 1
+                  c(MP) = 0
+          c(processors) = 1                          (Stata/MP, set processors)
+      c(processors_lic) = 1
+     c(processors_mach) = 3
+      c(processors_max) = 1
+                c(mode) = ""
+             c(console) = ""
+    ----------------------------------------------------------------------------------------------
+                  c(os) = "Windows"
+               c(osdtl) = "64-bit"
+            c(hostname) = "xa109"
+        c(machine_type) = "PC (64-bit x86-64)"
+           c(byteorder) = "lohi"
+            c(username) = "vivek4"
+    ----------------------------------------------------------------------------------------------
+
+Directories and paths
+
+    ----------------------------------------------------------------------------------------------
+        c(sysdir_stata) = "\\gump.forest.usf.."      (sysdir)
+         c(sysdir_base) = "\\gump.forest.usf.."      (sysdir)
+         c(sysdir_site) = "\\gump.forest.usf.."      (sysdir)
+         c(sysdir_plus) = "c:\ado\plus/"             (sysdir)
+     c(sysdir_personal) = "c:\ado\personal/"         (sysdir)
+     c(sysdir_oldplace) = "c:\ado/"                  (sysdir)
+              c(tmpdir) = "C:\Users\vivek4\A.."
+--more--
