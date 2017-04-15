@@ -124,3 +124,53 @@ Directories and paths
      c(sysdir_oldplace) = "c:\ado/"                  (sysdir)
               c(tmpdir) = "C:\Users\vivek4\A.."
 --more--
+
+. scalar a=10
+
+. display a
+10
+
+. 
+Mata= Matrix programming language
+. matrix define A=(1,2,3\4,5,6)
+
+. A
+unrecognized command:  A
+r(199);
+
+. display A
+type mismatch
+r(109);
+
+. matrix list A
+
+A[2,3]
+    c1  c2  c3
+r1   1   2   3
+r2   4   5   6
+
+. display A[1,2]
+2
+
+. summarize mpg
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+         mpg |        74     21.2973    5.785503         12         41
+
+. return list
+
+scalars:
+                  r(N) =  74
+              r(sum_w) =  74
+               r(mean) =  21.2972972972973
+                r(Var) =  33.47204738985561
+                 r(sd) =  5.785503209735141
+                r(min) =  12
+                r(max) =  41
+                r(sum) =  1576
+
+. display r(N)
+74
+
+
