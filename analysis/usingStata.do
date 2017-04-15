@@ -73,3 +73,6 @@ Run Simple linear regression
 In the above regression, mpg is dependent variable and weight is independent variable
 
 Findit is used to search news softwares or packages in stata.
+
+Help is used to get help regarding any command
+help regress
