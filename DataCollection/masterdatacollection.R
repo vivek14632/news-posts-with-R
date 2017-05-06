@@ -52,12 +52,15 @@ for(val in 1:nrow(newsagency)){
     	{
 		#create a temp vector to hold comments
 		#for a post
-		browser()
-      		temp=rep(0,nrow(posts[[i]]$comments))
-      		posts[[i]]$comments=cbind(posts[[i]]$comments,reply=temp)
+		#browser()
+      		#temp=rep(0,nrow(posts[[i]]$comments))
+      		#posts[[i]]$comments=cbind(posts[[i]]$comments,reply=temp)
       		if(posts[[i]]$post$comments_count>0)
       		{
-        		print(posts[[i]]$post$comments_count)
+			temp=rep(0,nrow(posts[[i]]$comments))
+                	posts[[i]]$comments=cbind(posts[[i]]$comments,reply=temp)
+
+        		print(paste('comment count=',posts[[i]]$post$comments_count))
       			for(j in 1:length(posts[[i]]$post$comments_count))
       			{
           			if(!is.na(posts[[i]]$comments$id[j]))
