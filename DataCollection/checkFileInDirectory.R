@@ -3,15 +3,13 @@
 # crawlig have been previously completed
 # or not
 
-checkFile<-function(mdirectory)
+checkFile<-function(newsData)
 {
 	mfiles=list.files('/home/cis1024/socialNetworkData')
-	if(any(mfiles=='usatoday2017-05-06.RData'))
+	if(any(mfiles==newsData))
 	{
 		return (TRUE)
-	}
-	else
-	{
+	}else{
 
 		return (FALSE)
 	}
