@@ -63,7 +63,8 @@ for(val in 1:nrow(newsagency)){
 		#browser()
       		#temp=rep(0,nrow(posts[[i]]$comments))
       		#posts[[i]]$comments=cbind(posts[[i]]$comments,reply=temp)
-      		if(posts[[i]]$post$comments_count>0)
+      		tryCatch({
+		if(posts[[i]]$post$comments_count>0)
       		{
 			temp=rep(0,nrow(posts[[i]]$comments))
                 	posts[[i]]$comments=cbind(posts[[i]]$comments,reply=temp)
@@ -88,6 +89,12 @@ for(val in 1:nrow(newsagency)){
         
       			}
       		}
+		},warning=function(w){
+			print(w)
+		},error=function(e){
+			print(e)
+		},finally={
+		})
       
     	}
     
