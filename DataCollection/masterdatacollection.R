@@ -43,11 +43,19 @@ for(val in 1:nrow(newsagency)){
   	{
     		print(paste('Fetching data for post number =',fb_page$id[value]))
     		#browser()
-    		posts[[value]] <- getPost(fb_page$id[value], toString(fb_oauth), comments = TRUE, likes = TRUE,
+		tryCatch({
+    			posts[[value]] <- getPost(fb_page$id[value], toString(fb_oauth), comments = TRUE, likes = TRUE,
                        n.likes = fb_page$likes_count[value], n.comments = fb_page$comments_count[value])
+		},warning=function(w){
+			print(w)
+		},error=function(e){
+			print(e)
+		},finally={
+			next
+		})
 	}
     
-	browser()
+	#browser()
 	for(i in 1:length(posts))
     	{
 		#create a temp vector to hold comments
@@ -83,10 +91,11 @@ for(val in 1:nrow(newsagency)){
       
     	}
     
+save.image(file=filename)
 }
   
   #filename <- paste(dataDir,newsagency$Handler[val],sep='')
   #filename <- paste(filename,Sys.Date(),sep='')
   #filename <- paste(filename,'.RData',sep='')
-save.image(file=filename)
+	#save.image(file=filename)
 
