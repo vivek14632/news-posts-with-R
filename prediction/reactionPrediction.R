@@ -24,6 +24,22 @@ names(fb_page)
 #to view all the posts
 fb_page$message
 
+#create a corpus
+corpus=fb_page$message
+
+# install the dplyr package if not available
+install.packages('dplyr')
+
+#load the package
+library(dplyr)
+
+text_df <- data_frame(line = 1:100, text = corpus)
+
+install.packages('tidytext')
+
+library('tidytext')
+
+install.packages('tm',dependencies=T)
 
 
 
