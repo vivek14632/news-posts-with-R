@@ -17,6 +17,7 @@ auth=tokensFile$tokens
 #auth <-lapply(file_names,load,.GlobalEnv)
 newsagency<-read.csv(file="https://raw.githubusercontent.com/bmthanki/news-posts-with-R/master/DataCollection/newsHandle.csv", sep=",",header = TRUE)
 for(val in 1:nrow(newsagency)){
+	tryCatch({
 	filename <- paste(dataDir,newsagency$Handler[val],sep='')
 	filename <- paste(filename,Sys.Date(),sep='')
 	filename <- paste(filename,'.RData',sep='')
@@ -99,6 +100,16 @@ for(val in 1:nrow(newsagency)){
     	}
     
 save.image(file=filename)
+ },warning=function(w){
+                        print(w)
+                },error=function(e){
+                        print(e)
+                },finally={
+                        next
+                })
+
+
+
 }
   
   #filename <- paste(dataDir,newsagency$Handler[val],sep='')
