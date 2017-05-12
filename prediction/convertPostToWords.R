@@ -2,9 +2,22 @@
 
 convertPostToWords<-function(post)
 {
-
+	browser()
+	delimiters<-c("\\.",",",":",";")
 	#TODO
 
+	for (i in (1:length(delimiters)))
+	{
+
+		post=gsub(delimiters[i]," ",post)
+		
+	}
 	#dummy result vector
-	result<-c('hello','how','are','you')
+	post=strsplit(post," ")
+	return (post[[1]])
 }
+
+
+#Unit test code
+#fbpost="hello,how,are you"
+#print(convertPostToWords(fbpost))
