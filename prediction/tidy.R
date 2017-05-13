@@ -12,3 +12,9 @@ library('tidytext')
 #install.packages('tidytext')
 
 text_df1<-unnest_tokens(text_df,word, text)
+
+#remove stop words
+data(stop_words)
+text_df2 <- anti_join(text_df1,stop_words)
+
+
