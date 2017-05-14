@@ -46,7 +46,7 @@ for ( i in 1:lengthOfUniqueWords)
                   #the print is for debuggging puspose only
                   print(paste(i,j,k))
             
-                  if(text_df2$line == j && text_df2$word==uniqueWords[i])
+                  if((text_df2$line == j) && (text_df2$word==uniqueWords[i]))
                     {
                       documentTermMatrix[j,i]=1  
                     }
