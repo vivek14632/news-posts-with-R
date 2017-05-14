@@ -19,4 +19,14 @@ text_df1<-unnest_tokens(text_df,word, text)
 data(stop_words)
 text_df2 <- anti_join(text_df1,stop_words)
 
+wordsu=unique(text_df2)
+dim=length(unique(text_df2))
+DIM=dim*100
+docMat=matrix(rep(0,DIM),nrow=100)
+for ( i in 1:nrow(text_df2))
+  {
+  
+  
+  
+  }
 
