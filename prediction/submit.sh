@@ -2,7 +2,7 @@
 #
 #SBATCH --comment=r-test
 #SBATCH --ntasks=1
-#SBATCH --job-name=r-test
+#SBATCH --job-name=tidy
 #SBATCH --output=output.%j.r-test
 #SBATCH --time=05:00:00
 #SBATCH --mem=30G
