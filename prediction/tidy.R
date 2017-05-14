@@ -19,13 +19,39 @@ text_df1<-unnest_tokens(text_df,word, text)
 data(stop_words)
 text_df2 <- anti_join(text_df1,stop_words)
 
-wordsu=unique(text_df2)
-dim=length(unique(text_df2))
-DIM=dim*100
-docMat=matrix(rep(0,DIM),nrow=100)
-for ( i in 1:nrow(text_df2))
+#get the unique words, it represents the corpus
+uniqueWords=unique(text_df2$word)
+
+#length of vector
+lengthOfUniqueWords=length(uniqueWords)
+
+#number of posts under analysis, we can change this value to include more posts
+numberOfPosts=100
+
+# total number of elements in document matrix
+dimDocumentMatrix= numberOfPosts*lengthOfUniqueWords
+
+#create the document-term matrix
+documentTermMatrix=data.frame(matrix(rep(0,dimDocumentMatrix), nrow=numberOfPosts))
+
+
+names(documentTermMatrix)<-uniqueWords
+
+for ( i in 1:lengthOfUniqueWords)
   {
-  
+    for(j in 1:nrow(documentTermMatrix))
+        {
+          for (k in 1:nrow(text_df2))
+               {
+                  if(text_df2$line == j && text_df2$word==uniqueWords[i])
+                    {
+                      documentTermMatrix[1,1]=1  
+                    }
+                 
+               }
+            
+          
+        }
   
   
   }
