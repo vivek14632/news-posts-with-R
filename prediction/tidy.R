@@ -7,7 +7,7 @@ if(as.character(Sys.info()['user'])=='vivek4'){
 	cnbcFiles=list.files('/home/cis1024/socialNetworkData',pattern='cnbc*',full.names=T)
 }
 
-print('number of RData files=',length(cnbcFiles))
+print(paste('number of RData files=',length(cnbcFiles)))
 
 load(cnbcFiles[1])
 totalData=fb_page
@@ -39,8 +39,12 @@ text_df1<-unnest_tokens(text_df,word, text)
 data(stop_words)
 text_df2 <- anti_join(text_df1,stop_words)
 
+#browser()
+text_df3<-count(text_df2, word, sort=T)[1:50,]
+
 #get the unique words, it represents the corpus
-uniqueWords=unique(text_df2$word)
+uniqueWords=unique(text_df3$word)
+
 
 #remove all na from the unique words
 uniqueWords=uniqueWords[!is.na(uniqueWords)]
