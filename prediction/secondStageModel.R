@@ -18,3 +18,17 @@ for (i in 2:length(cnbcFiles))
         totalData<-rbind(totalData,fb_page)
 }
 
+requiredVariables<-myvars <- c("haha_count", "wow_count", "sad_count","angry_count", "love_count","shares_count")
+
+dataForAnalysis <- totalData[requiredVariables]
+
+dataForAnalysis<-na.omit(dataForAnalysis)
+
+
+testSampleSize=floor(.2*nrow(dataForAnalysis))
+trainingSampleSize=nrow(dataForAnalysis)-testSampleSize
+
+training=dataForAnalysis[1:trainingSampleSize,]
+test=dataForAnalysis[(trainingSampleSize+1):nrow(totalData),]
+
+
