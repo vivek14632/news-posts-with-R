@@ -31,4 +31,24 @@ trainingSampleSize=nrow(dataForAnalysis)-testSampleSize
 training=dataForAnalysis[1:trainingSampleSize,]
 test=dataForAnalysis[(trainingSampleSize+1):nrow(totalData),]
 
+model<-lm(shares_count~.,data=training)
+predictedValues=predict(model,test)
+
+results<-data.frame(predictedValues,test$shares_count)
+results=na.omit(results)
+
+
+mape<-function(x,y)
+{
+  (sum(abs(x-y)/(x+1))/length(x))
+}
+
+print(paste('Linear model mape'=mape(results$predictedValues,results$test.shares_count)))
+
+
+
+
+
+
+
 
