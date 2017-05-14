@@ -45,7 +45,7 @@ for ( i in 1:lengthOfUniqueWords)
                {
                   if(text_df2$line == j && text_df2$word==uniqueWords[i])
                     {
-                      documentTermMatrix[1,1]=1  
+                      documentTermMatrix[j,i]=1  
                     }
                  
                }
@@ -55,4 +55,4 @@ for ( i in 1:lengthOfUniqueWords)
   
   
   }
-
+save.image(file='tidy.RData')
