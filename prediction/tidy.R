@@ -1,3 +1,5 @@
+load('/home/cis1024/socialNetworkData/cnbc2017-05-10.RData')
+
 library('dplyr')
 
 #if you do not have the above package then install it
