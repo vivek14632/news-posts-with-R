@@ -34,6 +34,7 @@ dimDocumentMatrix= numberOfPosts*lengthOfUniqueWords
 #create the document-term matrix
 documentTermMatrix=data.frame(matrix(rep(0,dimDocumentMatrix), nrow=numberOfPosts))
 
+#browser()
 
 names(documentTermMatrix)<-uniqueWords
 
@@ -45,8 +46,15 @@ for ( i in 1:lengthOfUniqueWords)
                {
                   #the print is for debuggging puspose only
                   print(paste(i,j,k))
+
+		# check there are null values
+		if(any(is.na(text_df2[k,])))
+		{
+			print('null value')
+			next
+		}
             
-                  if((text_df2$line == j) && (text_df2$word==uniqueWords[i]))
+                  if((text_df2$line[k] == j) && (text_df2$word[k]==uniqueWords[i]))
                     {
                       documentTermMatrix[j,i]=1  
                     }
