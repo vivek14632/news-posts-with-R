@@ -22,6 +22,9 @@ text_df2 <- anti_join(text_df1,stop_words)
 #get the unique words, it represents the corpus
 uniqueWords=unique(text_df2$word)
 
+#remove all na from the unique words
+uniqueWords=uniqueWords[!is.na(uniqueWords)]
+
 #length of vector
 lengthOfUniqueWords=length(uniqueWords)
 
