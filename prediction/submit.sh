@@ -9,6 +9,6 @@
 #### SLURM 4 processor R test to run for 1 hour.
 
 module purge
-module add apps/R/3.1.2
+module add apps/R/3.2.3
 
 mpirun Rmpi tidy.R
