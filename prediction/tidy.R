@@ -1,11 +1,24 @@
-load('/home/cis1024/socialNetworkData/cnbc2017-05-10.RData')
+startTime=Sys.time()
+
+#get names of all cnbc files
+cnbcFiles=list.files('/home/cis1024/socialNetworkData',pattern='cnbc*',full.names=T)
+load(cnbcFiles[1])
+totalData=fb_page
+for (i in 2:length(cnbcFiles))
+{
+	#browser()
+	load(cnbcFiles[i])
+	totalData<-rbind(totalData,fb_page)
+}
+
+
 
 library('dplyr')
 
 #if you do not have the above package then install it
 
 #create a dataframe
-text_df<-data_frame(line=1:100, text=fb_page$message)
+text_df<-data_frame(line=1:nrow(totalData), text=totalData$message)
 
 
 library('tidytext')
@@ -29,7 +42,7 @@ uniqueWords=uniqueWords[!is.na(uniqueWords)]
 lengthOfUniqueWords=length(uniqueWords)
 
 #number of posts under analysis, we can change this value to include more posts
-numberOfPosts=100
+numberOfPosts=nrow(totalData)
 
 # total number of elements in document matrix
 dimDocumentMatrix= numberOfPosts*lengthOfUniqueWords
@@ -69,4 +82,8 @@ for ( i in 1:lengthOfUniqueWords)
   
   
   }
+
+endTime=Sys.time()
+print(endTime-startTime)
+
 save.image(file='tidy.RData')
