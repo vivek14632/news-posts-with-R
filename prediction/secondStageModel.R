@@ -36,8 +36,8 @@ test=dataForAnalysis[(trainingSampleSize+1):nrow(dataForAnalysis),]
 lm_model<-lm(shares_count~.,data=training)
 predictedValues=predict(lm_model,test)
 
-results<-data.frame(predictedValues,test$shares_count)
-results=na.omit(results)
+#results<-data.frame(predictedValues,test$shares_count)
+#results=na.omit(results)
 
 
 mape<-function(x,y)
@@ -45,18 +45,18 @@ mape<-function(x,y)
   (sum(abs(x-y)/(x+1))/length(x))
 }
 
-print(paste('Linear model mape=',mape(results$predictedValues,results$test.shares_count)))
+print(paste('Linear model mape=',mape(as.numeric(predictedValues),test$shares_count)))
 
 library('e1071')
 svm_model<-svm(shares_count~.,data=training)
 
-browser()
+#browser()
 predictedValues=predict(svm_model,test)
 
-results<-data.frame(predictedValues,test$shares_count)
-results=na.omit(results)
+#results<-data.frame(predictedValues,test$shares_count)
+#results=na.omit(results)
 
-print(paste('SVM model mape=',mape(results$predictedValues,results$test.shares_count)))
+print(paste('SVM model mape=',mape(as.numeric(predictedValues),test$shares_count)))
 
 
 
