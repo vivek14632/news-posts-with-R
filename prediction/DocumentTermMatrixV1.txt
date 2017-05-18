@@ -21,7 +21,7 @@ data(stop_words)
 text_df4 <- text_df3 %>% anti_join(stop_words)
 
 # add the count 
-ap_td <- text_df3 %>% group_by(line,word) %>% tally()
+ap_td <- text_df4 %>% group_by(line,word) %>% tally()
 
 library('tm')
 
