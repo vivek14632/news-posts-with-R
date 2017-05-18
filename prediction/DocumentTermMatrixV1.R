@@ -1,4 +1,28 @@
-load('/home/cis1024/socialNetworkData/cnbc2017-05-10.RData')
+#load('/home/cis1024/socialNetworkData/cnbc2017-05-10.RData')
+
+#get names of all cnbc files
+
+if(as.character(Sys.info()['user'])=='vivek4'){
+        cnbcFiles=list.files('/work/v/vivek4/ProjectData_05_17/',pattern='cnbc*',full.names=T)
+}else{
+        cnbcFiles=list.files('/home/cis1024/ProjectData_05_17',full.names=T)
+}
+
+print(paste('number of RData files=',length(cnbcFiles)))
+
+load(cnbcFiles[1])
+totalData=fb_page
+for (i in 2:length(cnbcFiles))
+{
+        #browser()
+        load(cnbcFiles[i])
+        totalData<-rbind(totalData,fb_page)
+}
+
+
+
+
+
 
 library('dplyr')
 
@@ -6,7 +30,7 @@ library('dplyr')
 
 #create a dataframe
 
-text_df<-data_frame(line=1:100, text=fb_page$message)
+text_df<-data_frame(line=1:length(totalData$message), text=totalData$message)
 
 # divide the text into single words in a data frame
 library('tidytext')
