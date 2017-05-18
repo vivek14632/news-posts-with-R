@@ -33,3 +33,7 @@ inspect(m)
 
 dim(m)
  inspect(m[1:93,1:577])
+
+#added by vivek
+#to create a document term matrix for prediction
+m_data1 <- ap_td %>% cast_sparse(line, word, n)

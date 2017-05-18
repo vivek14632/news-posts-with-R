@@ -58,6 +58,10 @@ predictedValues=predict(svm_model,test)
 
 print(paste('SVM model mape=',mape(as.numeric(predictedValues),test$shares_count)))
 
+library('MASS')
+lm.ridge_model<-lm.ridge(shares_count~.,data=training)
+predictedValues=predict(lm.ridge_model,test)
+print(paste('Linear ridge model mape=',mape(as.numeric(predictedValues),test$shares_count)))
 
 
 
