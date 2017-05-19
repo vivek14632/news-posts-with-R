@@ -10,3 +10,4 @@ library('Rfacebook')
 #read tokens file
 tokensFile<-read.csv('/home/cis1024/projects/socialMediaProject/fbTokens.txt',header=T)
 auth=tokensFile$tokens
+fb_page <- getPage(page=newsagency$Handler[val], token=toString(fb_oauth),n=100,feed = T,reactions = T)
