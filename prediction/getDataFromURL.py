@@ -15,7 +15,9 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 binary = FirefoxBinary('C:\Program Files (x86)\Mozilla Firefox\firefox.exe')
 fp=open('urls.csv')
-urls=fp.readlines()
+
+# lets read all URLs from file and also skip the header [0]
+urls=fp.readlines()[1:]
 fp.close()
 
 #The following line is commented because of this exception: selenium.common.exceptions.WebDriverException: Message: Unable to find a matching set of capabilities
