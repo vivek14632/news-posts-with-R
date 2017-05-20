@@ -14,7 +14,7 @@ import time
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 binary = FirefoxBinary('C:\Program Files (x86)\Mozilla Firefox\firefox.exe')
-fp=open('url.txt')
+fp=open('urls.csv')
 urls=fp.readlines()
 fp.close()
 
