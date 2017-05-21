@@ -49,15 +49,10 @@ ap_td <- text_df4 %>% group_by(line,word) %>% tally()
 
 library('tm')
 
-# Create document term matrix
-m <- ap_td %>% cast_dtm(line, word, n)
-
-# Check document term matrix
-inspect(m)
-
-dim(m)
- inspect(m[1:93,1:577])
-
 #added by vivek
 #to create a document term matrix for prediction
 m_data1 <- ap_td %>% cast_sparse(line, word, n)
+
+#added by manoj
+# Check document term matrix
+inspect(m_data1)
