@@ -38,7 +38,7 @@ for(j in 1:length(all_links)){
     #browser()
     page <- read_html(paste(destPath,all_links[j],sep =""))
     p <-page %>% html_nodes("div.cnbc-body ") 
-    print(paste("/home/nargis/Desktop/test/",all_links[j],sep =""))
+    print(paste(destPath,all_links[j],sep =""))
     df <- data.frame(
       newsId = character(1),
       headline = character(1),
