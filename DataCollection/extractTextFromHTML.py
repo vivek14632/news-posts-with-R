@@ -1,3 +1,4 @@
+# Purpose: To extract all visible text from a HTML file
 
 def extractTextFromHTML(mFileName)
   fp=open(mFileName)
