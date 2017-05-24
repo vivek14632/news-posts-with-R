@@ -1,12 +1,14 @@
 # Using the code developed by Nargis
-
+# Purpose: to download all the html files using fb_page$link
 library(rvest)
 library(stringr)
 
-# to download all the links
-
+# all URLs to extract the html
 urls <- fb_page$link
+
+# location to store the html files
 destPath <-"/home/nargis/Desktop/test1/"
+
 
 i <-1
 #j<-1
