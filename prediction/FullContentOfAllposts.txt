@@ -11,7 +11,7 @@ library(tools)
 
 urls["Contents"] <- NA
 
-#Initiaizatio of variables
+#Initiaization of variables
 
 x  <- length(urls$value)
 m  <- length(urls$value)
