@@ -17,6 +17,8 @@ for (i in 2:length(cnbcFiles))
   totalData<-rbind(totalData,fb_page)
 }
 
+totalData<-fb_page
+
 requiredVariables<-c("haha_count", "wow_count", "sad_count","angry_count", "love_count","shares_count")
 
 requiredVariablesPlusLike<-c("haha_count","likes_count", "wow_count", "sad_count","angry_count", "love_count","shares_count")
@@ -55,11 +57,11 @@ testBoth=dataForAnalysisBoth[(trainingSampleSize+1):nrow(dataForAnalysisBoth),]
 
 rmse<-function(x,y)
 {
-  sum((abs(x-y))^2)
+  sqrt(sum((abs(x-y))^2)/length(y))
 }
 mape<-function(x,y)
 {
-  (sum(abs(x-y)/(x+1))/length(x))
+  (sum(abs(y-x)/(y+1))/length(y))
 }
 
 lm_model<-lm(shares_count~.,data=training)
@@ -68,6 +70,8 @@ predictedValues=predict(lm_model,test)
 print(paste('Linear model rmse=',rmse(as.numeric(predictedValues),test$shares_count)))
 
 print(paste('Linear model mape=',mape(as.numeric(predictedValues),test$shares_count)))
+
+
 #like
 lm_model_like<-lm(shares_count~.,data=trainingLike)
 predictedValues=predict(lm_model_like,testLike)
