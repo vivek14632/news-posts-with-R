@@ -1,4 +1,6 @@
-setwd("C:/Users/SONY/Desktop/Social Media Project/CnnData")
+#setwd("C:/Users/SONY/Desktop/Social Media Project/CnnData")
+dataDir <- "C:/Users/SONY/Desktop/Social Media Project/CnnData"
+urlsnew <- read.csv(file.path(dataDir,"urls.csv"))
 
 # Get the list of all text files containing the full content of a post
 
