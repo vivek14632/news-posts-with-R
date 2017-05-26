@@ -1,0 +1,38 @@
+setwd("C:/Users/SONY/Desktop/Social Media Project/CnnData")
+# Getting the list of all text files containing the full content of a post
+textfiles <- list.files(pattern = '.txt')
+library(tools)
+#Initiaizatio of variables
+urls["Contents"] <- NA
+x  <- length(urls$value)
+m  <- length(urls$value)
+# Loop to read and write the full content of each link with the master data table
+for ( k in 1:x)
+{
+  for(l in 1:m)
+  {
+    y <- file_path_sans_ext(textfiles[l])
+    #By Pass Text Files with no contents
+    if(any(is.na(textfiles[l])))
+    {
+
+      next
+    }
+    print (paste(urls$value[k],l,y))
+    if(urls$value[k] ==  y)
+  
+      {urls$Contents[k] <- readLines(textfiles[l])
+      print (paste(urls$value[k],k,y))      
+      break
+    }
+    else {
+      
+      next}
+    
+  }
+}
+
+# omit all rows with NAs
+urls1 <- na.omit(urls)
+# merge data frame with full content with emoji counts using link variable
+finaldata <- merge(fb_page,urls1,by = "link")
