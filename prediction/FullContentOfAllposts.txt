@@ -55,4 +55,4 @@ urls1 <- na.omit(urls)
 # merge data frame with full content with emoji counts using link variable
 finaldata <- merge(fb_page,urls1,by = "link")
 
-save.image() 
+save.image("file = "CnnContent.RData") 
