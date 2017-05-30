@@ -66,16 +66,27 @@ yLikeTest <- as.matrix(testLike[,7])
 #type
 trainingType=dataForAnalysisType[1:trainingSampleSize,]
 xTypeTrain <- as.matrix(trainingType[,1:6])
+
+xTypeTrain3 <- model.matrix(~ haha_count + type+ wow_count + sad_count + angry_count + love_count,data = trainingType, contrasts.arg = list(type=contrasts(trainingType$type,contrasts =F)))
+
 yTypeTrain <- as.matrix(trainingType[,7])
 testType=dataForAnalysisType[(trainingSampleSize+1):nrow(dataForAnalysisType),]
 xTypeTest <- as.matrix(testType[,1:6])
+
+xTypeTest3 <- model.matrix(~haha_count + type+ wow_count + sad_count + angry_count + love_count,data = testType, contrasts.arg = list(type=contrasts(testType$type,contrasts =F)))
+
 yTypeTest <- as.matrix(testType[,7])
+
 #both
 trainingBoth=dataForAnalysisBoth[1:trainingSampleSize,]
 xBothTrain <- as.matrix(trainingBoth[,1:7])
+
+xBothTrain3 <- model.matrix(~ haha_count + type + likes_count + wow_count + sad_count + angry_count + love_count,data = trainingBoth, contrasts.arg = list(type=contrasts(trainingBoth$type,contrasts =F)))
 yBothTrain <- as.matrix(trainingBoth[,8])
 testBoth=dataForAnalysisBoth[(trainingSampleSize+1):nrow(dataForAnalysisBoth),]
 xBothTest <- as.matrix(testBoth[,1:7])
+
+xBothTest3 <- model.matrix(~ haha_count + type + likes_count + wow_count + sad_count + angry_count + love_count,data = testBoth, contrasts.arg = list(type=contrasts(testBoth$type,contrasts =F)))
 yBothTest <- as.matrix(testBoth[,8])
 
 rmse<-function(x,y)
@@ -178,21 +189,92 @@ print(paste('Ridge model mape=',mape(as.numeric(predictions),yLikeTest)))
 
 #type
 
-fit <- glmnet(xTypeTrain, yTypeTrain, family="gaussian", alpha=0, lambda=0.001)
+fit <- glmnet(xTypeTrain3, yTypeTrain, family="gaussian", alpha=0, lambda=0.001)
 
 # make predictions
-predictions <- predict(fit, xTypeTest, type="link")
+predictions <- predict(fit, xTypeTest3, type="link")
 
 print(paste('Ridge model rmse=',rmse(as.numeric(predictions),yTypeTest)))
 print(paste('Ridge model mape=',mape(as.numeric(predictions),yTypeTest)))
 
 #both
 
-fit <- glmnet(xBothTrain, yBothTrain, family="gaussian", alpha=0, lambda=0.001)
+fit <- glmnet(xBothTrain3, yBothTrain, family="gaussian", alpha=0, lambda=0.001)
 
 # make predictions
-predictions <- predict(fit, xBothTest, type="link")
+predictions <- predict(fit, xBothTest3, type="link")
 
 print(paste('Ridge model rmse=',rmse(as.numeric(predictions),yBothTest)))
 print(paste('Ridge model mape=',mape(as.numeric(predictions),yBothTest)))
 
+
+
+#lasso
+
+fit <- lars(xTrain, yTrain, type="lasso")
+best_step <- fit$df[which.min(fit$RSS)]
+predictions <- predict(fit, xTest, s=best_step, type="fit")$fit
+
+print(paste('Lasso model rmse=',rmse(as.numeric(predictions),yTest)))
+print(paste('Lasso model mape=',mape(as.numeric(predictions),yTest)))
+
+
+#like
+fit <- lars(xLikeTrain, yLikeTrain, type="lasso")
+best_step <- fit$df[which.min(fit$RSS)]
+predictions <- predict(fit, xLikeTest, s=best_step, type="fit")$fit
+
+print(paste('Lasso model rmse=',rmse(as.numeric(predictions),yLikeTest)))
+print(paste('Lasso model mape=',mape(as.numeric(predictions),yLikeTest)))
+
+
+#type
+fit <- lars(xTypeTrain3, yTypeTrain, type="lasso")
+best_step <- fit$df[which.min(fit$RSS)]
+predictions <- predict(fit, xTypeTest3, s=best_step, type="fit")$fit
+
+print(paste('Lasso model rmse=',rmse(as.numeric(predictions),yTypeTest)))
+print(paste('Lasso model mape=',mape(as.numeric(predictions),yTypeTest)))
+
+
+#both
+fit <- lars(xBothTrain3, yBothTrain, type="lasso")
+best_step <- fit$df[which.min(fit$RSS)]
+predictions <- predict(fit, xBothTest3, s=best_step, type="fit")$fit
+
+print(paste('Lasso model rmse=',rmse(as.numeric(predictions),yBothTest)))
+print(paste('Lasso model mape=',mape(as.numeric(predictions),yBothTest)))
+
+
+
+#elastic net
+fit <- glmnet(xTrain, yTrain, family="gaussian", alpha=0.5, lambda=0.001)
+predictions <- predict(fit, xTest, type="link")
+
+print(paste('elastic model rmse=',rmse(as.numeric(predictions),yTest)))
+print(paste('elastic model mape=',mape(as.numeric(predictions),yTest)))
+
+
+
+#like
+fit <- glmnet(xLikeTrain, yLikeTrain, family="gaussian", alpha=0.5, lambda=0.001)
+predictions <- predict(fit, xLikeTest, type="link")
+
+print(paste('elastic model rmse=',rmse(as.numeric(predictions),yLikeTest)))
+print(paste('elastic model mape=',mape(as.numeric(predictions),yLikeTest)))
+
+
+#type
+fit <- glmnet(xTypeTrain3, yTypeTrain, family="gaussian", alpha=0.5, lambda=0.001)
+predictions <- predict(fit, xTypeTest3, type="link")
+
+print(paste('elastic model rmse=',rmse(as.numeric(predictions),yTypeTest)))
+print(paste('elastic model mape=',mape(as.numeric(predictions),yTypeTest)))
+
+
+#Both
+fit <- glmnet(xBothTrain3, yBothTrain, family="gaussian", alpha=0.5, lambda=0.001)
+predictions <- predict(fit, xBothTest3, type="link")
+
+print(paste('elastic model rmse=',rmse(as.numeric(predictions),yBothTest)))
+print(paste('elastic model mape=',mape(as.numeric(predictions),yBothTest))
