@@ -10,5 +10,5 @@ library('Rfacebook')
 #read tokens file
 tokensFile<-read.csv('/home/cis1024/projects/socialMediaProject/fbTokens.txt',header=T)
 auth=tokensFile$tokens
-fb_page <- getPage(page='cnn', token=toString(auth[1]),n=4000,feed = T,reactions = T)
+fb_page <- getPage(page='cnn', token=toString(auth[1]),n=100,feed = T,reactions = T)
 save.image(file='cnn.RData')

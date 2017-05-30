@@ -1,5 +1,5 @@
-source('./dataLocation.R')
-source('./checkFileInDirectory.R')
+source('/home/cis1024/projects/socialMediaProject/news-posts-with-R/DataCollection/dataLocation.R')
+source('/home/cis1024/projects/socialMediaProject/news-posts-with-R/DataCollection/checkFileInDirectory.R')
 library('Rfacebook')
 
 
