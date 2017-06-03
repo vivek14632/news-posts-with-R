@@ -86,4 +86,10 @@ library('tm')
 
 #added by vivek
 #to create a document term matrix for prediction
-m_data1 <- ap_td %>% cast_sparse(line, word, n)
+m_data1 <- ap_td %>% cast_dtm(line, word, n)
+library('matrix')
+library('data.table')
+MatrixData <- as.matrix(m_data1)
+#require(data.table)
+#data.table(M, keep.rownames = TRUE)
+save.image("file = "Datamodeling.RData") 
