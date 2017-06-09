@@ -39,7 +39,12 @@ for ( k in 1:x)
     if(urls$value[k] ==  y)
   
       {urls$Contents[k] <- readLines(textfiles[l])
-     # print (paste(urls$value[k],k,y))      
+      # print (paste(urls$value[k],k,y)) 
+      #Data Cleansing
+     # urls1$Contents[k] <- tolower(urls1$Contents[k])
+      #urls1$Contents[k] <- gsub(pattern = "\\W", replacement = " ",urls1$Contents[k])
+      #urls1$Contents[k] <- gsub(pattern = "\\d", replacement = " ",urls1$Contents[k])
+          
       break
     }
     else {
@@ -87,8 +92,8 @@ library('tm')
 #added by vivek
 #to create a document term matrix for prediction
 m_data1 <- ap_td %>% cast_dtm(line, word, n)
-#library('matrix')
-#library('data.table')
+library('matrix')
+library('data.table')
 MatrixData <- as.matrix(m_data1)
 #require(data.table)
 #data.table(M, keep.rownames = TRUE)
