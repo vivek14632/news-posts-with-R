@@ -8,7 +8,7 @@ library('Rfacebook')
 #file_names=as.list(dir('/home/bhargav/facebook/rdata'))
 
 #read tokens file
-#tokensFile<-read.csv('/home/cis1024/projects/socialMediaProject/fbTokens.txt',header=T)
+tokensFile<-read.csv('/home/cis1024/projects/socialMediaProject/fbTokens.txt',header=T)
 auth=tokensFile$tokens
 
 
@@ -59,7 +59,7 @@ for(val in 1:nrow(newsagency)){
 		})
 	}
     
-	browser()
+	#browser()
 	for(i in 1:length(posts))
     	{
 		#create a temp vector to hold comments
