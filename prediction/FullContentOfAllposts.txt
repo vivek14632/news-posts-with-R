@@ -109,5 +109,5 @@ dt <- sort(sample(nrow(x),nrow(x)*.7))
 train <- x[dt,]
 test <- x[-dt,]
 lm_model <- lm(likecount ~ .,data = train)
-summarry(lm_model)
+summary(lm_model)
 values <- predict(lm_model,x)
