@@ -98,3 +98,14 @@ MatrixData <- as.matrix(m_data1)
 #require(data.table)
 #data.table(M, keep.rownames = TRUE)
 save.image(file = "Datamodeling.RData") 
+#add likes count from the final data with the DTM
+dsmerge <- cbind(MatrixData, likecount = finaldata$likes_count)
+x<- data.frame(dsmerge)
+
+#Create 80% train data and 20% test data
+dt <- sort(sample(nrow(x),nrow(x)*.7))
+train <- x[dt,]
+test <- x[-dt,]
+lm_model <- lm(likecount ~ .,data = train)
+summarry(lm_model)
+values <- predict(lm_model,x)
