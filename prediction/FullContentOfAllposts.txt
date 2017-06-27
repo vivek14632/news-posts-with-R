@@ -42,8 +42,10 @@ for ( k in 1:x)
       # print (paste(urls$value[k],k,y)) 
       #Data Cleansing
      # urls1$Contents[k] <- tolower(urls1$Contents[k])
-      #urls1$Contents[k] <- gsub(pattern = "\\W", replacement = " ",urls1$Contents[k])
-      #urls1$Contents[k] <- gsub(pattern = "\\d", replacement = " ",urls1$Contents[k])
+      urls1$Contents[k] <- gsub(pattern = "\\W", replacement = " ",urls1$Contents[k])
+      urls1$Contents[k] <- gsub(pattern = "\\d", replacement = " ",urls1$Contents[k])
+     # txt <- gsub("[[:digit:]]", "", urls1$Contents[1])
+     urls1$Contents[k] <- gsub("[[:digit:]]", "", urls1$Contents[k])
           
       break
     }
