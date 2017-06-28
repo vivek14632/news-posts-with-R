@@ -41,11 +41,11 @@ for ( k in 1:x)
       {urls$Contents[k] <- readLines(textfiles[l])
       # print (paste(urls$value[k],k,y)) 
       #Data Cleansing
-     # urls1$Contents[k] <- tolower(urls1$Contents[k])
-      urls1$Contents[k] <- gsub(pattern = "\\W", replacement = " ",urls1$Contents[k])
-      urls1$Contents[k] <- gsub(pattern = "\\d", replacement = " ",urls1$Contents[k])
-     # txt <- gsub("[[:digit:]]", "", urls1$Contents[1])
-     urls1$Contents[k] <- gsub("[[:digit:]]", "", urls1$Contents[k])
+     # urls$Contents[k] <- tolower(urls$Contents[k])
+      urls$Contents[k] <- gsub(pattern = "\\W", replacement = " ",urls$Contents[k])
+      urls$Contents[k] <- gsub(pattern = "\\d", replacement = " ",urls$Contents[k])
+     # txt <- gsub("[[:digit:]]", "", urls$Contents[1])
+     urls$Contents[k] <- gsub("[[:digit:]]", "", urls$Contents[k])
           
       break
     }
