@@ -1,0 +1,6 @@
+setwd("C:/Users/Project/Desktop/Social Media Data/Data")
+load("LatestFbpage.Rdata")
+View(fb_page)
+fbpage_subset <- subset(fb_page_con, type = "link", select=c(id, link))
+View(fbpage_subset)
+write.csv(fbpage_subset, file = "urllink.csv", row.names = FALSE)
