@@ -1,3 +1,5 @@
+
+
 install.packages('rvest')
 
 library(rvest)
@@ -26,5 +28,34 @@ error=function(cond){
 
 setwd("C:/Users/Project/Desktop/Social Media Data/Data")
 write.csv(urlcontent, file = "urlcontent.csv")
+
+#DATA CLEANSING
+library(tm)
+#Data Cleansing
+newdata$Content <- as.character(newdata$Content)
+m <- nrow(newdata)
+for(n in 1:m)
+{
+  #remove all punctuations
+  newdata$Content[n] <- gsub(pattern = "\\W", replacement = " ",newdata$Content[n])
+  
+  #print(n)
+  #remove all decimals
+  newdata$Content[n]<-  gsub(pattern = "\\d", replacement = " ",newdata$Content[n]) 
+  
+  #convert to lower case
+  newdata$Content[n] <- tolower(newdata$Content[n]) 
+  
+  #remove stop words
+  newdata$Content[n] <- removeWords(newdata$Content[n], stopwords()) 
+  
+  #Remove words with 1  character
+  newdata$Content[n] <- gsub(pattern = "\\b[A-z\\b{1}", replace=" ", newdata$Content[n] )
+  
+  #Remove words with 2  character
+  newdata$Content[n] <- gsub(pattern = "\\b[A-z\\b{2}", replace=" ", newdata$Content[n] )
+  
+}
+
 
 
