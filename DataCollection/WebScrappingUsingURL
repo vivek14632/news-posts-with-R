@@ -1,0 +1,30 @@
+install.packages('rvest')
+
+library(rvest)
+# First, grab the page source
+urlcontent<-urls
+m<-length(urls$id)
+urlcontent$Content <- NA
+for(i in 1:m)
+{
+  print(i)
+  tryCatch({
+    urlcontent$Content[i] <-  html(urlcontent$link[i]) %>%
+  # then extract the first node with class of wikitable
+  html_node(".entry-content") %>% 
+  # then convert the HTML table into a data frame
+  html_text()
+  
+},
+error=function(cond){
+  message(paste("No text data for:", urlcontent$id))
+  message(cond)
+  return(NA)
+  }
+)
+}
+
+setwd("C:/Users/Project/Desktop/Social Media Data/Data")
+write.csv(urlcontent, file = "urlcontent.csv")
+
+
