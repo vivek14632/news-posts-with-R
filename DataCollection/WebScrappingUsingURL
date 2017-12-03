@@ -1,5 +1,3 @@
-
-
 install.packages('rvest')
 
 library(rvest)
@@ -28,6 +26,15 @@ error=function(cond){
 
 setwd("C:/Users/Project/Desktop/Social Media Data/Data")
 write.csv(urlcontent, file = "urlcontent.csv")
+
+#remove rows with NA or no contents
+Content <- urlcontent$Content
+total <- cbind(fb_page_con,Content)
+attach(total)
+newdata <- subset(total,!is.na(Content))
+detach(total) 
+setwd("C:/Users/Project/Desktop/Social Media Data/Data")
+save(newdata, file="newdata.RData")
 
 #DATA CLEANSING
 library(tm)
